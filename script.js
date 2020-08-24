@@ -3,17 +3,21 @@ var currentTime = moment().format("LTS")
 var timeValue = moment().format("LTS")
 console.log(timeValue)
 
-// Function to update the time
+// Current Time Function
 function runningClock() {
     setInterval(function(){
-$("#currentTime").html(moment().format("LTS"));
+$("#currentTime").html("Current Time: " + moment().format("LTS"));
 }, 1000);
 }
 
-// Function to update the day
+// Current Day Function
 function currentDay(){
-    $("#currentDay").html(dayLabel);
+    $("#currentDay").html("Current Day: " + dayLabel);
 }
+
+//Display current Day and make sure clock is running
+currentDay()
+runningClock()
 
 // Save button function
 $(".saveBtn").on("click", function(){
@@ -24,6 +28,32 @@ $(".saveBtn").on("click", function(){
          console.log(eventInput)
 })
 
-//Display current Day and make sure clock is running
-currentDay()
-runningClock()
+
+
+$('.row').each(function(i, obj) {
+    //test
+    console.log(i, obj.id)
+    console.log(currentTime[0] + currentTime[1])
+
+    var militaryTime = moment().format('HH')
+    console.log(militaryTime)
+
+    var twoDigitTime = currentTime[0] + currentTime[1]
+
+    if (militaryTime === twoDigitTime) {
+        $(this).addClass('present');
+    }
+
+    if (militaryTime < twoDigitTime) {
+        $(this).addClass('past')
+    }
+
+    if (militaryTime > twoDigitTime) {
+        $(this).addClass('future')
+    }
+});
+
+    // example:
+    // let string = "cat"
+    // string[0]
+    // the above will return "c"
