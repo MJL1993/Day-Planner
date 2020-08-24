@@ -40,15 +40,15 @@ $('.row').each(function(i, obj) {
 
     var twoDigitTime = currentTime[0] + currentTime[1]
 
-    if (militaryTime === twoDigitTime) {
+    if (militaryTime === obj.id) {
         $(this).addClass('present');
     }
 
-    if (militaryTime < twoDigitTime) {
+    if (militaryTime > obj.id) {
         $(this).addClass('past')
     }
 
-    if (militaryTime > twoDigitTime) {
+    if (militaryTime < obj.id) {
         $(this).addClass('future')
     }
 });
